@@ -17,7 +17,6 @@ export default function Developer(){
                                 <Link href={`developer/${devleoper.id}`}>
                                 <div className="flex my-5">
                                 <div className=" font-medium ">{devleoper.name}</div>
-                                <div className=" font-medium ml-4">{devleoper.role}</div>
                                 </div>
                                 </Link>
                             </li>

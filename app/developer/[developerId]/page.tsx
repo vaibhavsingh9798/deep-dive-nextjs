@@ -5,7 +5,7 @@ import NotFound from "../not-found"
 export default function ProfileDetails({params} : {params:{developerId: Number}}){
     let devId = params.developerId;
     let listLength : Number = devList.length;
-    let valid : Boolean = devId < listLength
+    let valid : Boolean = devId <= listLength
       
 
     let developer : Developer= devList.filter((dev) => dev.id == devId)[0]
