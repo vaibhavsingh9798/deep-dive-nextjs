@@ -3,9 +3,7 @@
 import mongoose from 'mongoose';
 
 const MeetupSchema = new mongoose.Schema({
-  id: {
-    type: String,
-  },
+
   title: {
     type: String,
     required: true,

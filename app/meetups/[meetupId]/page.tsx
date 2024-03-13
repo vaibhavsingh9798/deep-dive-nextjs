@@ -1,13 +1,21 @@
 
 import MeetupItemDetails from "@/components/meetups/MeetupItemDetails"
-import meetups from '@/app/lib/meetup-list'
 import { redirect } from "next/navigation";
 
-export default function MeetupDetails({params}:{params:{meetupId:any}}){
+async function findItem(id:String){
+    try{
+     let response = await fetch(`http://localhost:3000/api/add-meetup/${id}`)
+     let data = await response.json()
+     return data;
+    }catch(err){
+        console.log(err)
+    }
+}
+export default async function MeetupDetails({params}:{params:{meetupId:any}}){
 
     let id  = params.meetupId;
-    const item = meetups.filter((meetup) => meetup.id == id)
-     
+    const item = await findItem(id) || []
+      console.log('item...',item)
     if(!item.length){
        redirect('/meetups')
     }
