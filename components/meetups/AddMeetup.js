@@ -9,10 +9,23 @@ import { useState } from "react";
       setMeetupInfo(prevState => ({...prevState,[name]:value}))
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
          e.preventDefault();
-         console.log('m',meetupInfo)
-         setMeetupInfo({title:'',image:'',address:''})
+         try{
+          let response = await fetch('http://localhost:3000/api/add-meetup',{
+            method:'POST',
+            body: JSON.stringify(meetupInfo),
+            headers:{'Content-Type':'application/json'}
+
+          })
+
+          console.log('m',meetupInfo)
+          setMeetupInfo({title:'',image:'',address:''})
+
+          console.log('add meet res',response)
+         }catch(err){
+             console.error('something wrong with add data')
+         }
     }
 
     return(
